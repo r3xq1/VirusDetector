@@ -9,7 +9,7 @@
         [STAThread]
         public static void Main(string[] args)
         {
-
+            Console.Title = "Stealer Detector Tools";
             if (args.Length == 0)
             {
                 Console.WriteLine("args not found");
@@ -24,6 +24,10 @@
             }
             try
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write("Путь к файлу для проверки: ");
+                Console.ResetColor();
+                Console.WriteLine($"{ExePath}\r\n\r\n");
                 using var Module = ModuleDefMD.Load(ExePath);
                 GrabberDetector.GetCalls(Module);
                 GrabberDetector.GetLibs(Module);
